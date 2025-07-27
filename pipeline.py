@@ -3,7 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import RandomizedSearchCV
 
 
 # THe import dataset from EDA
@@ -30,9 +30,10 @@ param_grid = {
   'model__max_depth': [3,5,7],
   'model__gamma': [0.1,1,3,5],
 }
-grid = GridSearchCV(
+grid = RandomizedSearchCV(
   estimator=final_pipeline,
-  param_grid=param_grid,
+  param_distributions =param_grid,
+  n_iter=4,
   scoring='accuracy',
   cv=3,
   n_jobs=-1
@@ -40,4 +41,6 @@ grid = GridSearchCV(
 
 grid.fit(x_train,y_train)
 
-grid.predict(x_test)
+
+print(grid.predict(x_test))
+
