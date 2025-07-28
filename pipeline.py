@@ -41,6 +41,6 @@ grid = RandomizedSearchCV(
 
 grid.fit(x_train,y_train)
 
-
+print(grid.best_estimator_)
 print(grid.predict(x_test))
 
