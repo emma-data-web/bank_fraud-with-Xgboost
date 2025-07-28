@@ -1,5 +1,12 @@
+# Ignore Python-related junk
+__pycache__/
+.ipynb_checkpoints/
+env/
 
+# VSCode settings
 .vscode/
-__pycache__/.ipynb_checkpoints/env/
+
+# Data files
 *.csv
 *.xlsx
+*.plk
